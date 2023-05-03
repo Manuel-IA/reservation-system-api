@@ -3,7 +3,19 @@ class RestaurantsController < ApplicationController
 
   # GET /restaurants
   def index
-    @restaurants = Restaurant.all
+    query = request.query_parameters
+
+    if !query.blank?
+      city = query[:city]
+      if !city.blank?
+        @restaurants = Restaurant.filter_by_city(city)
+      else
+        name = query[:name]
+        @restaurants = Restaurant.filter_by_name(name)
+      end
+    else
+      @restaurants = Restaurant.all
+    end
 
     render json: @restaurants
   end
