@@ -10,7 +10,7 @@ class RestaurantsController < ApplicationController
       if !city.blank?
         @restaurants = Restaurant.filter_by_city(city)
       else
-        name = query[:name]
+        name = query[:name].blank? ? '' : query[:name]
         @restaurants = Restaurant.filter_by_name(name)
       end
     else

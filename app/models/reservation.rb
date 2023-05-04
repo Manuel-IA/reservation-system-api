@@ -7,8 +7,8 @@ class Reservation < ApplicationRecord
 
   def check_limit
     restaurant = self.restaurant
-    range = self.date.beginning_of_day..self.date.end_of_day
-    reservations = Reservation.where(date: range)
+    range = self.datetime.beginning_of_day..self.datetime.end_of_day
+    reservations = Reservation.where(datetime: range)
     reservations_by_day = reservations.where(restaurant_id: restaurant.id)
 
     if reservations_by_day.length >= restaurant.tables
