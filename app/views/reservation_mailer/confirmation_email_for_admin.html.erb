@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>¡Heads Up!</h1>
+    <p><%= @reservation.name %> made a new reservation for <%= @reservation.datetime.strftime("%B %d, %Y %H:%M") %> in <%= @restaurant.name %></p>
+  </body>
+</html>
