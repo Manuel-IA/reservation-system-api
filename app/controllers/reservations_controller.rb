@@ -18,6 +18,8 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.new(reservation_params)
 
     if @reservation.save
+      ReservationMailer.with(reservation: @reservation).confirmation_email.deliver_now
+      ReservationMailer.with(reservation: @reservation).confirmation_email_for_admin.deliver_now
       render json: @reservation, status: :created, location: @reservation
     else
       render json: @reservation.errors, status: :unprocessable_entity
