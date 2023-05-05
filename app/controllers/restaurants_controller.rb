@@ -1,5 +1,7 @@
 class RestaurantsController < ApplicationController
   before_action :set_restaurant, only: %i[ show update destroy ]
+  before_action :authenticate_user!
+
 
   # GET /restaurants
   def index
