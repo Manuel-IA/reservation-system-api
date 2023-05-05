@@ -91,6 +91,8 @@ Rails.application.configure do
     port: 25,
     domain: 'freesmtpservers.com',
     authentication: 'plain',
-    enable_starttls_auto: true
+    enable_starttls_auto: true,
+    open_timeout: 15,
+    read_timeout: 15
   }
 end
