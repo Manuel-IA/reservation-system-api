@@ -306,16 +306,16 @@ Devise.setup do |config|
   config.responder.redirect_status = :see_other
 
   config.jwt do |jwt|
-    jwt.secret = Rails.application.credentials.jwt_secret
+    jwt.secret = '123123123123123'#Rails.application.credentials.jwt_secret
     jwt.expiration_time = 6.months.to_i
 
     jwt.dispatch_requests = [
-      ['POST', %r{^/customers/sign_in$}],
+      ['POST', %r{^/users/sign_in$}],
       # ['GET', %r{^/dispatch_path_2$}],
     ]
 
     jwt.revocation_requests = [
-      ['DELETE', %r{^/customers/sign_out$}],
+      ['DELETE', %r{^/users/sign_out$}],
       # ['GET', %r{^/revocation_path_2$}],
     ]
   end
